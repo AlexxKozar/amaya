@@ -1,48 +1,54 @@
 
-<div class="container">
+<div class="container-wrapper">
+  <div class="container">
 
-  <div class="row">
-    <div class="col-12">
-      <header class="header">
-        <a class="logo">
-          <span class="logo__title">Amaya</span>
-          <span class="logo__description">Изготовление и продажа кухонной мебели</span>
-        </a>
+    <div class="row">
+      <div class="col-12">
+        <header class="header">
+          <a class="logo">
+            <span class="logo__title">Amaya</span>
+            <span class="logo__description">Изготовление и продажа кухонной мебели</span>
+          </a>
 
-        <div class="contacts">
-          <div class="contacts__left">
-            <a href="tel:{{phoneNumber}}" class="contacts__phone">{{phoneNumber}}</a>
-            <a href="#" class="contacts__address">{{showroomAddress}}</a>
+          <div class="contacts">
+            <div class="contacts__left">
+              <a href="tel:{{phoneNumber}}" class="contacts__phone">
+                <img src="assets/images/phone.png" class="contacts__icon" alt="phone icon">
+                <span>{{phoneNumber}}</span>
+              </a>
+              <a href="#" class="contacts__address">
+                <img src="assets/images/location.png" class="contacts__icon" alt="location icon">
+                <span>{{showroomAddress}}</span>
+              </a>
+            </div>
+            <div class="contacts__right">
+              <div><a href="#" class="contacts__button action-button">Получить консультацию</a></div>
+            </div>
           </div>
-          <div class="contacts__right">
-            <div><a href="#" class="contacts__button action-button">Получить консультацию</a></div>
-          </div>
-        </div>
-      </header>
+        </header>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-12">
-      <ng-content></ng-content>
+    <div class="row">
+      <div class="col-12">
+        <ng-content></ng-content>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-12">
-      <footer class="footer">
-        <div class="footer__container">
-          <p class="footer__social-title">Мы в соц сетях</p>
-          <div class="footer__social">
-            <a href="{{facebookLink}}" class="footer__social-item"><img src="assets/images/facebook.png" alt="Facebook"></a>
-            <a href="{{telegramLink}}" class="footer__social-item"><img src="assets/images/telegram.png" alt="Telegram"></a>
-            <a href="{{instagramLink}}" class="footer__social-item"><img src="assets/images/instagram.png" alt="Instagram"></a>
-            <a href="{{viberLink}}" class="footer__social-item"><img src="assets/images/viber.png" alt="Viber"></a>
-          </div>
-          <span class="footer__amaya">© AMAYA 2019</span>
-        </div>
-      </footer>
+    <div class="row">
+      <div class="col-12">
+        <footer class="footer">
+            <p class="footer__title">Мы в соц сетях</p>
+            <div class="footer__social">
+              <a href="{{facebookLink}}" class="footer__social-item"><img src="assets/images/facebook.png" class="footer__social-item-image" alt="Facebook"></a>
+              <a href="{{telegramLink}}" class="footer__social-item"><img src="assets/images/telegram.png" class="footer__social-item-image" alt="Telegram"></a>
+              <a href="{{instagramLink}}" class="footer__social-item"><img src="assets/images/instagram.png" class="footer__social-item-image" alt="Instagram"></a>
+              <a href="{{viberLink}}" class="footer__social-item"><img src="assets/images/viber.png" class="footer__social-item-image" alt="Viber"></a>
+            </div>
+            <p class="footer__copyright">© AMAYA 2019</p>
+        </footer>
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>

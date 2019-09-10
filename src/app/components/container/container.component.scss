@@ -1,6 +1,18 @@
 @import "fonts";
 @import "variables";
 
+.container-wrapper {
+  width: 100%;
+  background: rgba(230,238,242,1);
+  background: -moz-linear-gradient(top, rgba(230,238,242,1) 0%, rgba(245,249,250,1) 15%, rgba(255,255,255,1) 61%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(230,238,242,1)), color-stop(15%, rgba(245,249,250,1)), color-stop(61%, rgba(255,255,255,1)), color-stop(82%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(top, rgba(230,238,242,1) 0%, rgba(245,249,250,1) 15%, rgba(255,255,255,1) 61%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(top, rgba(230,238,242,1) 0%, rgba(245,249,250,1) 15%, rgba(255,255,255,1) 61%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(top, rgba(230,238,242,1) 0%, rgba(245,249,250,1) 15%, rgba(255,255,255,1) 61%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(to bottom, rgba(230,238,242,1) 0%, rgba(245,249,250,1) 15%, rgba(255,255,255,1) 61%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6eef2', endColorstr='#ffffff', GradientType=0 );
+}
+
 .container {
   height: 100vh;
   display: flex;
@@ -9,8 +21,8 @@
 }
 
 .header {
+  margin: 25px 0;
   width: 100%;
-  margin-top: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -21,16 +33,16 @@
   flex-direction: column;
 
   &__title {
-    font-size: 50px;
-    line-height: 56px;
+    font-size: 44px;
+    line-height: 46px;
     font-family: $boldArial;
     text-transform: uppercase;
-    letter-spacing: 16px;
+    letter-spacing: 15px;
     color: $text-main;
   }
 
   &__description {
-    font-size: 12px;
+    font-size: 11px;
     font-family: $regularArial;
     color: $text-main;
   }
@@ -43,23 +55,26 @@
   &__left {
     display: flex;
     flex-direction: column;
-    text-align: right;
     justify-content: center;
     padding-right: 20px;
   }
 
-  &__phone {
+  &__phone, &__address {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
     font-family: $regular;
     color: $text-main;
     font-size: 17px;
     text-decoration: none;
   }
 
-  &__address {
-    font-family: $regular;
-    color: $text-main;
-    font-size: 17px;
-    text-decoration: none;
+  &__icon {
+    width: 19px;
+    height: 19px;
+    margin-right: 5px;
+    opacity: .9;
   }
 
   &__right {
@@ -67,5 +82,29 @@
     flex-direction: column;
     justify-content: center;
   }
+}
 
+.footer {
+  margin: 25px 0;
+  width: 100%;
+  text-align: center;
+  &__title, &__copyright {
+    font-family: $regular;
+    color: $text-main;
+    font-size: 18px;
+  }
+
+  &__social {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    &-item {
+      width: 40px;
+      margin: 0 10px;
+      &-image {
+        width: 100%;
+      }
+    }
+  }
 }
