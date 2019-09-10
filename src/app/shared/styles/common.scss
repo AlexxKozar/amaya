@@ -1,0 +1,17 @@
+@import "fonts";
+@import "variables";
+
+.action-button {
+  display: block;
+  padding: 18px 24px;
+  background: $blue-main;
+  border-radius: 8px;
+  font-family: $regular;
+  font-size: 18px;
+  line-height: 18px;
+  color: #fff;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,71 @@
+@import "fonts";
+@import "variables";
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 50px;
+    line-height: 56px;
+    font-family: $boldArial;
+    text-transform: uppercase;
+    letter-spacing: 16px;
+    color: $text-main;
+  }
+
+  &__description {
+    font-size: 12px;
+    font-family: $regularArial;
+    color: $text-main;
+  }
+}
+
+.contacts {
+  display: flex;
+  flex-direction: row;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    justify-content: center;
+    padding-right: 20px;
+  }
+
+  &__phone {
+    font-family: $regular;
+    color: $text-main;
+    font-size: 17px;
+    text-decoration: none;
+  }
+
+  &__address {
+    font-family: $regular;
+    color: $text-main;
+    font-size: 17px;
+    text-decoration: none;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+}
