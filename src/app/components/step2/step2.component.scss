@@ -1,0 +1,29 @@
+@import "variables";
+
+.step2 {
+  &__schemas {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap
+  }
+  &__schema {
+    display: block;
+    width: 32%;
+    text-decoration: none;
+    &__image {
+      width: 100%;
+      margin-top: 20px;
+      max-width: 350px;
+    }
+    &__text {
+      width: 100%;
+      text-align: center;
+      font-family: $regular;
+      font-size: 24px;
+      color: $text-main;
+    }
+  }
+
+}

@@ -1,0 +1,128 @@
+@import "variables";
+
+.step4 {
+  &__questions {
+    margin-top: 10px;
+    padding: 0 10%;
+  }
+
+  &__question {
+    margin-top: 40px;
+    &__label {
+      margin: 0;
+      font-size: 22px;
+      font-family: $regular;
+      color: $text-main;
+    }
+    &__description {
+      margin: 0;
+      font-size: 16px;
+      font-family: $regular;
+      color: $text-main;
+    }
+  }
+
+  &__button-container {
+    margin: 30px 0 50px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    width: 90%;
+    max-width: 250px;
+    text-align: center;
+  }
+}
+
+
+
+/* custom properties (AKA css variables) */
+.si {
+  --color-label: #404040;
+  --color-default: #404040;
+  --color-active: #94B2B9;
+  --rotate-default: 180deg;
+  --rotate-active: 40deg;
+  --border-size-checkmark: 2px;
+  --border-size-box: 1px;
+  --input-size: 20px;
+  --guter: 15px;
+}
+
+/* basic reset */
+.si,
+.si *,
+.si *::before,
+.si *::after {
+  box-sizing: border-box;
+}
+
+/* label */
+.si {
+  cursor: pointer;
+  position: relative;
+}
+
+.si > input { display: none; }
+/* OR */
+.si > input { opacity: 0; }
+/* OR */
+.si > input { visibility: hidden; }
+
+
+/* change property values smoothly */
+.si .si-label::before,
+.si .si-label::after {
+  transition: all 0.2s ease-in-out;
+}
+
+/* an element for both checkbox and radio */
+.si .si-label::before {
+  content: '';
+  display: block;
+  width: var(--input-size);
+  height: var(--input-size);
+  border: var(--border-size-box) solid var(--color-default);
+  position: absolute;
+  top: 6px;
+  left: -30px;
+  transform: rotate(0deg) scale(1);
+}
+
+/* feedback when the user interacts with an element */
+.si .si-label:hover::before {
+  border-color: var(--color-active);
+}
+
+/* checkbox square */
+.si.si-checkbox .si-label::before {
+  border-radius: var(--border-size-checkmark);
+}
+
+/* checkbox checkmark */
+.si.si-checkbox .si-label::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 18px;
+  border-width: 0 var(--border-size-checkmark) var(--border-size-checkmark) 0;
+  border-style: solid;
+  border-color: transparent var(--color-active) var(--color-active) transparent;
+  position: absolute;
+  top: 6px;
+  left: -30px;
+  transform: rotate(var(--rotate-default)) scale(0);
+}
+
+/* checkbox square */
+.si.si-checkbox > input:checked + .si-label::before {
+  transform: rotate(var(--rotate-active)) scale(0);
+}
+
+/* checkmark */
+.si.si-checkbox > input:checked + .si-label::after {
+  left: -22px;
+  transform: rotate(var(--rotate-active)) scale(1);
+}
+

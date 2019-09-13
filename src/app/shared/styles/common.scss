@@ -15,3 +15,14 @@
     text-decoration: none;
   }
 }
+
+.title-default {
+  font-family: $regular;
+  font-size: 36px;
+  color: $text-main;
+  text-align: center;
+}
+
+.text-accent {
+  color: $blue-main
+}

@@ -1,0 +1,49 @@
+@import "variables";
+
+.step3 {
+
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__form {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  &__size {
+    margin: 0 auto;
+     &__text, &__label {
+       font-family: $regular;
+       font-size: 18px;
+       color: $text-main;
+     }
+    &__input {
+      font-family: $regular;
+      font-size: 18px;
+      color: $text-main;
+    }
+    &__label {
+      margin-left: 10px;
+    }
+  }
+
+  &__image {
+    margin: 10px;
+    max-width: 350px;
+  }
+
+  &__button-container {
+    margin: 20px 0 50px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    width: 90%;
+    max-width: 250px;
+    text-align: center;
+  }
+
+}
