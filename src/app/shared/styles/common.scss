@@ -21,8 +21,46 @@
   font-size: 36px;
   color: $text-main;
   text-align: center;
+  @media screen and (max-width: 600px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 26px;
+  }
 }
 
 .text-accent {
   color: $blue-main
+}
+
+.step__prev-button {
+  position: relative;
+  margin-left: 12px;
+  font-family: $regular;
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+  transition: .05s;
+  opacity: .6;
+  &:hover {
+    text-decoration: none;
+    color: #000;
+    opacity: 1;
+  }
+  &:before {
+    position: absolute;
+    left: -24px;
+    top: 4px;
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url("/assets/images/left-arrow.svg");
+    background-size: contain;
+  }
+}
+
+.step__prev-container {
+  width: 100%;
+  text-align: center;
 }
