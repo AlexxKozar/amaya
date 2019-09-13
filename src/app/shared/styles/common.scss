@@ -16,6 +16,20 @@
   }
 }
 
+.second-title-default {
+  width: 90%;
+  max-width: 800px;
+  margin: 5px auto 0 auto;
+  font-family: $regular;
+  font-size: 18px;
+  color: $text-main;
+  text-align: center;
+  opacity: .9;
+  @media screen and (max-width: 480px) {
+    font-size: 16px;
+  }
+}
+
 .title-default {
   font-family: $regular;
   font-size: 36px;

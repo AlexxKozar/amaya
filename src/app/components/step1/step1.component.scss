@@ -15,7 +15,10 @@
       line-height: 50px;
     }
     @media screen and (max-width: 480px) {
-      margin-top: 15px;
+      margin-top: 10px;
+    }
+    @media screen and (max-width: 400px) {
+      margin-top: 0;
     }
   }
   &__title-second {
