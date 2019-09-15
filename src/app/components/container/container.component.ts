@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { PHONE_NUMBER, SHOWROOM_ADDRESS } from '@constants/contact-data.constant';
 import { FACEBOOK_LINK, TELEGRAM_LINK, INSTAGRAM_LINK, VIBER_LINK } from '@constants/links.constant';
 
@@ -9,16 +9,18 @@ import { FACEBOOK_LINK, TELEGRAM_LINK, INSTAGRAM_LINK, VIBER_LINK } from '@const
 })
 export class ContainerComponent implements OnInit {
 
-  phoneNumber: string = PHONE_NUMBER;
-  showroomAddress: string = SHOWROOM_ADDRESS;
-  facebookLink: string = FACEBOOK_LINK;
-  telegramLink: string = TELEGRAM_LINK;
-  instagramLink: string = INSTAGRAM_LINK;
-  viberLink: string = VIBER_LINK;
+  public phoneNumber: string = PHONE_NUMBER;
+  public showroomAddress: string = SHOWROOM_ADDRESS;
+  public facebookLink: string = FACEBOOK_LINK;
+  public telegramLink: string = TELEGRAM_LINK;
+  public instagramLink: string = INSTAGRAM_LINK;
+  public viberLink: string = VIBER_LINK;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onActivate(componentReference) {
+  }
 }

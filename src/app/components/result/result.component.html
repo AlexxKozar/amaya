@@ -2,45 +2,71 @@
   <h2 class="result__title title-default">Результаты рассчета</h2>
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <img src="assets/images/kitchen-urban.png" class="result__image" alt="Your kitchen">
+      <div class="result__price">
+        <p class="result__price-count">Общая стоимось: <span class="text-accent">{{calculationData.totalPrice}} грн</span></p>
+        <p class="result__price-time">Сроки изготовления: <span class="text-accent">2 недели</span></p>
+        <p class="result__price-item">Сумма: {{calculationData.kitchenPrice}} грн</p>
+        <p class="result__price-item">Замер: 0 грн</p>
+        <p class="result__price-item">Дизайн проект: 0 грн</p>
+        <p class="result__price-item">Доставка по Киеву: {{calculationData.deliveryPrice}} грн</p>
+        <p class="result__price-item">Сборка/монтаж: {{calculationData.mountingPrice}} грн</p>
+        <div class="line"></div>
+        <p class="result__price-item"><span class="bold">Итого:</span> {{calculationData.totalPrice}} грн</p>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <img src="assets/images/{{kitchenImageFilename}}" class="result__image" alt="Your kitchen">
       <p class="result__description">Комплектация кухни: материал, цвет и тд. полностью
         согласовывается с Вами на этапе дизайн проекта </p>
     </div>
-
     <div class="col-sm-12 col-md-4">
-      <div class="result__price">
-        <p class="result__price-count">Общая стоимось: <span class="text-accent">10 000 грн</span></p>
-        <p class="result__time-count">Сроки изготовления: <span class="text-accent">2 недели</span></p>
+      <div class="result__configuration">
         <h3 class="result__configuration-title">Конфигурация:</h3>
-        <ul class="result__configuration">
-          <li><p class="result__configuration-item">Стоимость за м/п: 5 000</p></li>
-          <li><p class="result__configuration-item">Остров/низ: 5 000</p></li>
-          <li><p class="result__configuration-item">Пенал духовка: 5 000</p></li>
-          <li><p class="result__configuration-item">Пенал холодильник: 5 000</p></li>
-          <li><p class="result__configuration-item">Антрисоль за м/п: 5 000</p></li>
-          <li><p class="result__configuration-item">Пенал с полками: 5 000</p></li>
-          <div class="line"></div>
-          <li><p class="result__configuration-item">Сборка монтаж: 5 000</p></li>
+        <ul class="result__configuration__list">
+          <li><p class="result__configuration-item">Стиль: {{formsData.style}}</p></li>
+          <li><p class="result__configuration-item">Форма: {{formsData.schema}}</p></li>
+          <li><p class="result__configuration-item">Размеры: {{formsData.sizes}}</p></li>
+          <li *ngIf="formsData.configuration.down.selected"><p class="result__configuration-item">+ Только низ</p></li>
+          <li *ngIf="formsData.configuration.freezer.selected"><p class="result__configuration-item">+ Пенал холодильник</p></li>
+          <li *ngIf="formsData.configuration.oven.selected"><p class="result__configuration-item">+ Пенал духовка</p></li>
+          <li *ngIf="formsData.configuration.mezzanine.selected"><p class="result__configuration-item">+ Антрисоль</p></li>
+          <li *ngIf="formsData.configuration.shelves.selected"><p class="result__configuration-item">+ Пенал с полками</p></li>
+          <li *ngIf="formsData.configuration.island.selected"><p class="result__configuration-item">+ Остров, длина: {{formsData.configuration.island.size}} мм</p></li>
         </ul>
       </div>
     </div>
+  </div>
 
+  <h3 class="result__bonus-title title-default">Получите бонус</h3>
+
+  <div class="row">
     <div class="col-sm-12 col-md-4">
       <div class="result__bonus">
         <h3 class="result__bonus__title">Получите гарантировано бонус при заказе кухни:</h3>
         <ul class="result__bonus__list">
           <li class="result__bonus__list-item">
-            <img class="result__bonus__list-icon" src="assets/images/blue-icon.png" alt="">
+            <img class="result__bonus__list-icon" src="assets/images/gift-box.svg" alt="">
             <p class="result__bonus__list-text">Дизайн-проект в Подарок</p></li>
           <li class="result__bonus__list-item">
-            <img class="result__bonus__list-icon" src="assets/images/blue-icon.png" alt="">
+            <img class="result__bonus__list-icon" src="assets/images/gift-box.svg" alt="">
             <p class="result__bonus__list-text">Мойка в Подарок</p>
           </li>
         </ul>
-        <div class="result__bonus__button-container">
-          <a href="#" class="result__bonus__button action-button">Получить бонус</a>
-        </div>
+        <p class="result__bonus__description">Оставьте заявку и наш менеджер свяжется с Вами в ближайшее время!</p>
       </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <form (ngSubmit)="onFormSubmit()" class="result__form">
+        <!--<h3 class="result__form__title">Получить бонус</h3>-->
+        <input required [(ngModel)]="contactsModel.name" name="name" class="result__form__input" type="text" placeholder="Имя">
+        <input required [(ngModel)]="contactsModel.phone" name="phone" class="result__form__input" type="text" placeholder="Телефон">
+        <div class="result__form__button-container">
+          <button type="submit" class="result__form__button action-button">Получить бонус</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <img src="assets/images/kitchen-bonus.png" class="result__image" alt="Your kitchen">
     </div>
   </div>
 

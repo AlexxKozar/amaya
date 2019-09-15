@@ -10,9 +10,12 @@
   font-size: 18px;
   line-height: 18px;
   color: #fff;
+  border: none;
+  transition: .2s;
   &:hover {
     color: #fff;
     text-decoration: none;
+    background: #3F9BB0;;
   }
 }
 
@@ -77,4 +80,8 @@
 .step__prev-container {
   width: 100%;
   text-align: center;
+}
+
+.bold {
+  font-family: $bold;
 }

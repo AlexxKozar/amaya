@@ -1,4 +1,4 @@
-<div class="step4">
+<form (ngSubmit)="onFormSubmit()" class="step4">
 
   <h2 class="step4__title title-default">4. Выберите конфигурацию</h2>
   <p class="second-title-default">Осталось ответить на 1 вопрос, чтобы получить гарантированный бонус</p>
@@ -7,7 +7,7 @@
     <div class="col-12 col-sm-6 col-md-4">
       <div class="step4__question">
         <label for="configuration-question1" class="si si-checkbox">
-          <input id="configuration-question1" type="checkbox"/>
+          <input [(ngModel)]="configurationModel.down.selected" name="down" id="configuration-question1" type="checkbox"/>
           <span class="si-label step4__question__label">Только низ?</span>
         </label>
         <p class="step4__question__description">Краткое пояснение вопроса</p>
@@ -17,7 +17,7 @@
     <div class="col-12 col-sm-6 col-md-4">
       <div class="step4__question">
           <label for="configuration-question2" class="si si-checkbox">
-            <input id="configuration-question2" type="checkbox"/>
+            <input [(ngModel)]="configurationModel.freezer.selected" name="freezer"  id="configuration-question2" type="checkbox"/>
             <span class="si-label step4__question__label">Пенал холодильник?</span>
           </label>
           <p class="step4__question__description">Краткое пояснение вопроса</p>
@@ -27,7 +27,7 @@
     <div class="col-12 col-sm-6 col-md-4">
       <div class="step4__question">
           <label for="configuration-question3" class="si si-checkbox">
-            <input id="configuration-question3" type="checkbox"/>
+            <input [(ngModel)]="configurationModel.oven.selected" name="oven" id="configuration-question3" type="checkbox"/>
             <span class="si-label step4__question__label">Пенал духовка?</span>
           </label>
           <p class="step4__question__description">Краткое пояснение вопроса</p>
@@ -37,7 +37,7 @@
     <div class="col-12 col-sm-6 col-md-4">
       <div class="step4__question">
         <label for="configuration-question4" class="si si-checkbox">
-          <input id="configuration-question4" type="checkbox"/>
+          <input [(ngModel)]="configurationModel.shelves.selected" name="shelves" id="configuration-question4" type="checkbox"/>
           <span class="si-label step4__question__label">Пенал с полками?</span>
         </label>
         <p class="step4__question__description">Краткое пояснение вопроса</p>
@@ -47,7 +47,7 @@
     <div class="col-12 col-sm-6 col-md-4">
       <div class="step4__question">
         <label for="configuration-question5" class="si si-checkbox">
-          <input id="configuration-question5" type="checkbox"/>
+          <input [(ngModel)]="configurationModel.mezzanine.selected" name="mezzanine" id="configuration-question5" type="checkbox"/>
           <span class="si-label step4__question__label">Нужна ли антрисоль?</span>
         </label>
         <p class="step4__question__description">Краткое пояснение вопроса</p>
@@ -57,23 +57,26 @@
     <div class="col-12 col-sm-6 col-md-4">
       <div class="step4__question">
         <label for="configuration-question6" class="si si-checkbox">
-          <input id="configuration-question6" type="checkbox"/>
+          <input [(ngModel)]="configurationModel.island.selected" name="island" id="configuration-question6" type="checkbox"/>
           <span class="si-label step4__question__label">Остров?</span>
         </label>
         <p class="step4__question__description">Краткое пояснение вопроса</p>
-        <!--<p class="step4__question__description">Укажите длину</p>-->
-        <!--<input type="number" id="configuration-question6-length">-->
-        <!--<label for="configuration-question6-length">мм</label>-->
+        <div *ngIf="configurationModel.island.selected">
+          <p class="step4__question__description">Укажите длину</p>
+          <input [(ngModel)]="configurationModel.island.size" name="island-size" type="number" id="configuration-question6-length">
+          <label for="configuration-question6-length">мм</label>
+        </div>
+
       </div>
     </div>
   </div>
 
   <div class="step4__button-container">
-    <a href="#" routerLink="/result" class="step4__button action-button">Рассчитать стоимость</a>
+    <button type="submit" class="step4__button action-button">Рассчитать стоимость</button>
   </div>
 
   <div class="step__prev-container">
     <a href="#" routerLink="/step3" class="step__prev-button">Назад</a>
   </div>
 
-</div>
+</form>
