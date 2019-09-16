@@ -2,7 +2,7 @@ export const PRICES = {
   urban : {
     kitchen: 10748,
     down: -3985,
-    mezzanine: 1395,
+    mezzanine: 2351,
     island: 6763,
     freezer: 1209,
     oven: 1395,

@@ -34,7 +34,7 @@ export class CalculationService {
     const kitchenPrice = Math.round(kitchenPrices.kitchen * totalSize);
     const downPrice = Math.round(+configuration.down.selected * kitchenPrices.down * totalSize);
     const mezzaninePrice = Math.round(+configuration.mezzanine.selected * kitchenPrices.mezzanine * totalSize);
-    const islandPrice = Math.round(+configuration.island.selected * kitchenPrices.island * configuration.island.size);
+    const islandPrice = Math.round(+configuration.island.selected * kitchenPrices.island * configuration.island.size / 1000);
     const freezerPrice = +configuration.freezer.selected * kitchenPrices.freezer;
     const ovenPrice = +configuration.oven.selected * kitchenPrices.oven;
     const shelvesPrice = +configuration.shelves.selected * kitchenPrices.shelves;
