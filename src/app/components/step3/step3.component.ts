@@ -3,7 +3,7 @@ import { CalculationService } from '@services/calculation.service';
 import { Router } from '@angular/router';
 import { SCHEMA_IMAGE_FILENAMES } from '@constants/image-filenames.constant';
 import { SCHEMA_INPUTS } from '@constants/schema-inputs.constant';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-step3',
@@ -25,7 +25,12 @@ export class Step3Component implements OnInit {
   };
 
   public imageName: string;
-  public formInvalid = false;
+  public validationStatus = {
+    form: true,
+    top: true,
+    left: true,
+    right: true
+  };
 
   constructor(
     private router: Router,
@@ -38,16 +43,14 @@ export class Step3Component implements OnInit {
   }
 
   public onFormSubmit() {
-    const sizes = [];
-    for (const size of this.sizeForm.value) {
-      if (size) { sizes.push(size); }
-    }
+    const sizes = this._pushFormValuesToArray(this.sizeForm);
+    console.log('sizes', sizes);
     this.calculationService.setSizes(sizes);
 
     if (this.sizeForm.valid) {
         this.router.navigate(['/step4']);
     } else {
-      this.formInvalid = true;
+      this.validationStatus = this._setFormValidationStatus(this.sizeForm);
     }
   }
 
@@ -68,6 +71,32 @@ export class Step3Component implements OnInit {
         ]));
       }
     }
+  }
+
+  private _pushFormValuesToArray(form: FormGroup) {
+    const sizes = [];
+    for (const size in form.value) {
+      const value = form.value[size];
+      if (value) { sizes.push(+value); }
+    }
+    return sizes;
+  }
+
+  private _setFormValidationStatus(form: FormGroup) {
+    const validationStatus = {
+      form: form.valid,
+      top: true,
+      left: true,
+      right: true
+    };
+    for (const control in form.controls) {
+      validationStatus[control] = this._isControlValid(form.controls[control]);
+    }
+    return validationStatus;
+  }
+
+  private _isControlValid(control: AbstractControl) {
+    return control.status === 'VALID';
   }
 
 }

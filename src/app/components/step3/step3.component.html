@@ -11,7 +11,7 @@
           <p class="step3__size__text">Длинна верхней части: </p>
           <input
             formControlName="top"
-            [ngClass]="{'input-invalid': formInvalid}"
+            [ngClass]="{'input-invalid': !validationStatus.top}"
             class="step3__size__input"
             id="size-top"
             type="text"
@@ -28,7 +28,7 @@
           <input
             formControlName="left"
             class="step3__size__input"
-            [ngClass]="{'input-invalid': formInvalid}"
+            [ngClass]="{'input-invalid': !validationStatus.left}"
             id="size-left"
             type="text"
             placeholder="0">
@@ -45,7 +45,7 @@
           <p class="step3__size__text">Длинна правой части: </p>
           <input
             formControlName="right"
-            [ngClass]="{'input-invalid': formInvalid}"
+            [ngClass]="{'input-invalid': !validationStatus.right}"
             class="step3__size__input"
             id="size-right"
             type="text"
@@ -60,7 +60,7 @@
       type="submit"
       class="step3__button action-button">Далее</button>
   </div>
-  <p class="step3__validation-error" *ngIf="formInvalid">Введите корректные данные!</p>
+  <p class="step3__validation-error" *ngIf="!validationStatus.form">Введите корректные данные!</p>
   <div class="step__prev-container">
     <a href="#" routerLink="/step2" class="step__prev-button">Назад</a>
   </div>
