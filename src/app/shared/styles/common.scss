@@ -85,3 +85,7 @@
 .bold {
   font-family: $bold;
 }
+
+.input-invalid {
+  border: 2px solid red;
+}

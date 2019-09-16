@@ -29,6 +29,7 @@
       font-size: 18px;
       color: $text-main;
       width: 120px;
+      padding: 0 5px;
     }
     &__label {
       margin-left: 10px;
@@ -60,6 +61,14 @@
       order: 3;
     }
 
+  }
+
+  &__validation-error {
+    text-align: center;
+    margin: 0 auto 10px auto;
+    font-family: $regular;
+    font-size: 14px;
+    color: red;
   }
 
 }
