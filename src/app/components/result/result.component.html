@@ -5,7 +5,7 @@
       <div class="result__price">
         <p class="result__price-count">Общая стоимось: <span class="text-accent">{{calculationData.totalPrice}}</span></p>
         <p class="result__price-time">Сроки изготовления: <span class="text-accent">2 недели</span></p>
-        <p class="result__price-item">Сумма: {{calculationData.kitchenPrice}}</p>
+        <p class="result__price-item">Сумма: {{calculationData.configurationPrice}}</p>
         <p class="result__price-item">Замер: 0.0 грн</p>
         <p class="result__price-item">Дизайн проект: 0.0 грн</p>
         <p class="result__price-item">Доставка по Киеву: {{calculationData.deliveryPrice}}</p>
@@ -26,12 +26,12 @@
           <li><p class="result__configuration-item">Стиль: {{formsData.style}}</p></li>
           <li><p class="result__configuration-item">Форма: {{formsData.schema}}</p></li>
           <li><p class="result__configuration-item">Размеры: {{formsData.sizes}} мм</p></li>
-          <li *ngIf="formsData.configuration.down.selected"><p class="result__configuration-item">+ Только низ</p></li>
-          <li *ngIf="formsData.configuration.freezer.selected"><p class="result__configuration-item">+ Пенал холодильник</p></li>
-          <li *ngIf="formsData.configuration.oven.selected"><p class="result__configuration-item">+ Пенал духовка</p></li>
-          <li *ngIf="formsData.configuration.mezzanine.selected"><p class="result__configuration-item">+ Антрисоль</p></li>
-          <li *ngIf="formsData.configuration.shelves.selected"><p class="result__configuration-item">+ Пенал с полками</p></li>
-          <li *ngIf="formsData.configuration.island.selected"><p class="result__configuration-item">+ Остров, длина: {{formsData.configuration.island.size}} мм</p></li>
+          <li *ngIf="formsData.configuration.downSelection"><p class="result__configuration-item">+ Только низ</p></li>
+          <li *ngIf="formsData.configuration.freezerSelection"><p class="result__configuration-item">+ Пенал холодильник</p></li>
+          <li *ngIf="formsData.configuration.ovenSelection"><p class="result__configuration-item">+ Пенал духовка</p></li>
+          <li *ngIf="formsData.configuration.mezzanineSelection"><p class="result__configuration-item">+ Антрисоль</p></li>
+          <li *ngIf="formsData.configuration.shelvesSelection"><p class="result__configuration-item">+ Пенал с полками</p></li>
+          <li *ngIf="formsData.configuration.islandSelection"><p class="result__configuration-item">+ Остров, длина: {{formsData.configuration.islandSize}} мм</p></li>
         </ul>
       </div>
     </div>
@@ -57,7 +57,6 @@
     </div>
     <div class="col-sm-12 col-md-4 result__form-col">
       <form (ngSubmit)="onFormSubmit()" class="result__form">
-        <!--<h3 class="result__form__title">Получить бонус</h3>-->
         <input required [(ngModel)]="contactsModel.name" name="name" class="result__form__input" type="text" placeholder="Имя">
         <input required [(ngModel)]="contactsModel.phone" name="phone" class="result__form__input" type="text" placeholder="Телефон">
         <div class="result__form__button-container">

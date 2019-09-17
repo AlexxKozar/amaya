@@ -3,15 +3,13 @@ export interface CalculationDataInterface {
   schema: number;
   sizes: Array<number>;
   configuration: {
-    down: {selected: boolean}
-    freezer: {selected: boolean},
-    oven: {selected: boolean},
-    shelves: {selected: boolean},
-    mezzanine: {selected: boolean},
-    island: {
-      selected: boolean,
-      size: number
-    }
+    downSelection: boolean
+    freezerSelection: boolean,
+    ovenSelection: boolean,
+    mezzanineSelection: boolean,
+    shelvesSelection: boolean,
+    islandSelection: boolean,
+    islandSize: number
   };
 }
 

@@ -7,7 +7,7 @@
 
     <div class="row step3__row1">
       <div class="col-12">
-        <div *ngIf="inputsDisplay.top" class="step3__size step3__size-top">
+        <div *ngIf="inputsDisplayConfig.top" class="step3__size step3__size-top">
           <p class="step3__size__text">Длинна верхней части: </p>
           <input
             formControlName="top"
@@ -23,7 +23,7 @@
 
     <div class="row step3__row2">
       <div class="col-12 col-md-4 col-lg-3 step3__size-left-col">
-        <div *ngIf="inputsDisplay.left" class="step3__size step3__size-left">
+        <div *ngIf="inputsDisplayConfig.left" class="step3__size step3__size-left">
           <p class="step3__size__text">Длинна левой части: </p>
           <input
             formControlName="left"
@@ -41,7 +41,7 @@
       </div>
 
       <div class="col-12 col-md-4 col-lg-3 step3__size-right-col">
-        <div *ngIf="inputsDisplay.right" class="step3__size step3__size-right">
+        <div *ngIf="inputsDisplayConfig.right" class="step3__size step3__size-right">
           <p class="step3__size__text">Длинна правой части: </p>
           <input
             formControlName="right"
@@ -55,12 +55,13 @@
       </div>
     </div>
   </div>
+
   <div class="step3__button-container">
-    <button
-      type="submit"
-      class="step3__button action-button">Далее</button>
+    <button type="submit" class="step3__button action-button">Далее</button>
   </div>
+
   <p class="step3__validation-error" *ngIf="!validationStatus.form">Введите корректные данные!</p>
+
   <div class="step__prev-container">
     <a href="#" routerLink="/step2" class="step__prev-button">Назад</a>
   </div>

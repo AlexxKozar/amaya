@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CalculationService } from '@services/calculation.service';
+import { ValidationService } from '@services/validation.service';
 import { Router } from '@angular/router';
 import { SCHEMA_IMAGE_FILENAMES } from '@constants/image-filenames.constant';
 import { SCHEMA_INPUTS } from '@constants/schema-inputs.constant';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-step3',
@@ -18,7 +19,7 @@ export class Step3Component implements OnInit {
     right: new FormControl()
   });
 
-  public inputsDisplay = {
+  public inputsDisplayConfig = {
     top: false,
     left: false,
     right: false
@@ -35,12 +36,13 @@ export class Step3Component implements OnInit {
 
   constructor(
     private router: Router,
-    private calculationService: CalculationService
+    private calculationService: CalculationService,
+    private validationService: ValidationService
   ) { }
 
   ngOnInit() {
     this._setInitialData();
-    this._initFormControlsByObjectKeys(this.sizeForm, this.inputsDisplay);
+    this.validationService.setFormControlsValidationByConfig(this.sizeForm, this.inputsDisplayConfig);
   }
 
   public onFormSubmit() {
@@ -50,7 +52,7 @@ export class Step3Component implements OnInit {
     if (this.sizeForm.valid) {
         this.router.navigate(['/step4']);
     } else {
-      this._setFormValidationStatus(this.sizeForm, this.validationStatus);
+      this.validationService.setFormValidationStatus(this.sizeForm, this.validationStatus);
     }
   }
 
@@ -58,19 +60,7 @@ export class Step3Component implements OnInit {
     const formsData = this.calculationService.getFormsData();
     const { schema } = formsData;
     this.imageName = SCHEMA_IMAGE_FILENAMES[schema];
-    this.inputsDisplay = SCHEMA_INPUTS[schema];
-  }
-
-  private _initFormControlsByObjectKeys(form: FormGroup, object: any): void {
-    for (const key in object) {
-      if (object[key]) {
-        form.setControl(key, new FormControl(null,  [
-          Validators.required,
-          Validators.pattern('^[0-9]*$'),
-          Validators.minLength(2)
-        ]));
-      }
-    }
+    this.inputsDisplayConfig = SCHEMA_INPUTS[schema];
   }
 
   private _pushFormValuesToArray(form: FormGroup): Array<number> {
@@ -80,17 +70,6 @@ export class Step3Component implements OnInit {
       if (value) { sizes.push(+value); }
     }
     return sizes;
-  }
-
-  private _setFormValidationStatus(form: FormGroup, validationStatus: any): void {
-    validationStatus.form = form.valid;
-    for (const control in form.controls) {
-      validationStatus[control] = this._isControlValid(form.controls[control]);
-    }
-  }
-
-  private _isControlValid(control: AbstractControl): boolean {
-    return control.status === 'VALID';
   }
 
 }

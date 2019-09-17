@@ -19,6 +19,7 @@ export class ResultComponent implements OnInit {
 
   public calculationData = {
     totalPrice: 0,
+    configurationPrice: 0,
     kitchenPrice: 0,
     downPrice: 0,
     mezzaninePrice: 0,
