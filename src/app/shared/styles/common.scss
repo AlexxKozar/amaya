@@ -15,7 +15,7 @@
   &:hover {
     color: #fff;
     text-decoration: none;
-    background: #3F9BB0;;
+    background: $blue-accent;;
   }
 }
 
@@ -44,10 +44,6 @@
   @media screen and (max-width: 480px) {
     font-size: 26px;
   }
-}
-
-.text-accent {
-  color: $blue-main
 }
 
 .step__prev-button {
@@ -84,6 +80,10 @@
 
 .bold {
   font-family: $bold;
+}
+
+.text-accent {
+  color: $blue-main
 }
 
 .input-invalid {

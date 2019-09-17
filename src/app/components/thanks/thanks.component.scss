@@ -1,0 +1,37 @@
+@import "variables";
+
+.thanks {
+  text-align: center;
+  &__title {
+    font-family: $bold;
+    font-size: 24px;
+    color: $text-main;
+  }
+  &__text {
+    font-family: $regular;
+    font-size: 20px;
+    color: $text-main;
+  }
+  &__action {
+    font-family: $italic;
+    font-size: 20px;
+    color: $text-main;
+    a {
+      transition: .1s;
+      text-decoration: none;
+      &:hover {
+        color: $blue-accent;
+      }
+    }
+  }
+  &__back {
+    font-family: $bold;
+    font-size: 20px;
+    color: $blue-main;
+    cursor: pointer;
+    &:hover {
+      transition: .1s;
+      color: $blue-accent;
+    }
+  }
+}

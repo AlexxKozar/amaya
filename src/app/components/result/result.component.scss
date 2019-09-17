@@ -16,6 +16,15 @@
     opacity: .8;
   }
 
+  @media screen and (max-width: 768px) {
+    &__title {
+      margin-bottom: 30px;
+    }
+    &__image-col {
+      order: 1;
+    }
+  }
+
   &__price {
     padding-left: 20px;
 
@@ -37,6 +46,14 @@
       margin: 5px 0 0 0;
     }
 
+    @media screen and (max-width: 768px) {
+      padding: 0;
+      margin-bottom: 20px;
+      &-col {
+        order: 2;
+      }
+    }
+
   }
 
 
@@ -55,6 +72,13 @@
       font-family: $regular;
       font-size: 17px;
       color: $text-main;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 0;
+      &-col {
+        order: 0;
+      }
     }
   }
 
@@ -96,6 +120,12 @@
     &__description {
       margin: 20px 0 0 0;
     }
+    @media screen and (max-width: 768px) {
+      margin-top: 20px;
+      &-col {
+        order: 1;
+      }
+    }
   }
 
   &__form {
@@ -121,6 +151,21 @@
       max-width: 400px;
       text-align: center;
       border-radius: 4px;
+    }
+    @media screen and (max-width: 768px) {
+      margin-top: 20px;
+      &-col {
+        order: 2;
+      }
+    }
+  }
+
+  &__present {
+    @media screen and (max-width: 768px) {
+      margin-top: 10px;
+      &-col {
+        order: 0;
+      }
     }
   }
 
