@@ -55,15 +55,30 @@
         <p class="result__bonus__description">Оставьте заявку и наш менеджер свяжется с Вами в ближайшее время!</p>
       </div>
     </div>
+
     <div class="col-sm-12 col-md-4 result__form-col">
-      <form (ngSubmit)="onFormSubmit()" class="result__form">
-        <input required [(ngModel)]="contactsModel.name" name="name" class="result__form__input" type="text" placeholder="Имя">
-        <input required [(ngModel)]="contactsModel.phone" name="phone" class="result__form__input" type="text" placeholder="Телефон">
+
+      <form [formGroup]="resultForm" (ngSubmit)="onFormSubmit()" class="result__form">
+        <input
+          formControlName="name"
+          [ngClass]="{'input-invalid': !validationStatus.name}"
+          class="result__form__input"
+          type="text"
+          placeholder="Имя">
+        <input
+          formControlName="phone"
+          [ngClass]="{'input-invalid': !validationStatus.phone}"
+          class="result__form__input"
+          type="text"
+          placeholder="Телефон">
         <div class="result__form__button-container">
           <button type="submit" class="result__form__button action-button">Получить бонус</button>
         </div>
+        <p class="validation-error" *ngIf="!validationStatus.form">Введите корректные данные!</p>
       </form>
+
     </div>
+
     <div class="col-sm-12 col-md-4 result__present-col">
       <img src="assets/images/kitchen-bonus.png" class="result__image result__present" alt="Your kitchen">
     </div>
