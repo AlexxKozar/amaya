@@ -23,7 +23,6 @@ export class ValidationService {
   }
 
   public setFormValidationStatus(form: FormGroup, validationStatus: any): void {
-    debugger;
     validationStatus.form = form.valid;
     for (const control in form.controls) {
       validationStatus[control] = this.isControlValid(form.controls[control]);

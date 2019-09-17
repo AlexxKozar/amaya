@@ -71,7 +71,6 @@ export class ResultComponent implements OnInit {
     this._formatDataToMoneyFormat(this.calculationData);
     this.formsData = this.calculationService.getFormsData();
     this.kitchenImageFilename = STYLE_IMAGE_FILENAMES[this.formsData.style];
-    console.log(this.calculationData);
   }
 
   private _formatDataToMoneyFormat(data) {
