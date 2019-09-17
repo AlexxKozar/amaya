@@ -24,13 +24,14 @@ export class Step3Component implements OnInit {
     right: false
   };
 
-  public imageName: string;
   public validationStatus = {
     form: true,
     top: true,
     left: true,
     right: true
   };
+
+  public imageName: string;
 
   constructor(
     private router: Router,
@@ -44,24 +45,23 @@ export class Step3Component implements OnInit {
 
   public onFormSubmit() {
     const sizes = this._pushFormValuesToArray(this.sizeForm);
-    console.log('sizes', sizes);
     this.calculationService.setSizes(sizes);
 
     if (this.sizeForm.valid) {
         this.router.navigate(['/step4']);
     } else {
-      this.validationStatus = this._setFormValidationStatus(this.sizeForm);
+      this._setFormValidationStatus(this.sizeForm, this.validationStatus);
     }
   }
 
-  private _setInitialData() {
+  private _setInitialData(): void {
     const formsData = this.calculationService.getFormsData();
     const { schema } = formsData;
     this.imageName = SCHEMA_IMAGE_FILENAMES[schema];
     this.inputsDisplay = SCHEMA_INPUTS[schema];
   }
 
-  private _initFormControlsByObjectKeys(form: FormGroup, object: any) {
+  private _initFormControlsByObjectKeys(form: FormGroup, object: any): void {
     for (const key in object) {
       if (object[key]) {
         form.setControl(key, new FormControl(null,  [
@@ -73,7 +73,7 @@ export class Step3Component implements OnInit {
     }
   }
 
-  private _pushFormValuesToArray(form: FormGroup) {
+  private _pushFormValuesToArray(form: FormGroup): Array<number> {
     const sizes = [];
     for (const size in form.value) {
       const value = form.value[size];
@@ -82,20 +82,14 @@ export class Step3Component implements OnInit {
     return sizes;
   }
 
-  private _setFormValidationStatus(form: FormGroup) {
-    const validationStatus = {
-      form: form.valid,
-      top: true,
-      left: true,
-      right: true
-    };
+  private _setFormValidationStatus(form: FormGroup, validationStatus: any): void {
+    validationStatus.form = form.valid;
     for (const control in form.controls) {
       validationStatus[control] = this._isControlValid(form.controls[control]);
     }
-    return validationStatus;
   }
 
-  private _isControlValid(control: AbstractControl) {
+  private _isControlValid(control: AbstractControl): boolean {
     return control.status === 'VALID';
   }
 

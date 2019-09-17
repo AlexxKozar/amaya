@@ -25,7 +25,7 @@
         <ul class="result__configuration__list">
           <li><p class="result__configuration-item">Стиль: {{formsData.style}}</p></li>
           <li><p class="result__configuration-item">Форма: {{formsData.schema}}</p></li>
-          <li><p class="result__configuration-item">Размеры: {{formsData.sizes}}</p></li>
+          <li><p class="result__configuration-item">Размеры: {{formsData.sizes}} мм</p></li>
           <li *ngIf="formsData.configuration.down.selected"><p class="result__configuration-item">+ Только низ</p></li>
           <li *ngIf="formsData.configuration.freezer.selected"><p class="result__configuration-item">+ Пенал холодильник</p></li>
           <li *ngIf="formsData.configuration.oven.selected"><p class="result__configuration-item">+ Пенал духовка</p></li>
@@ -72,7 +72,7 @@
 
   <div class="row">
     <div class="col-12 result__address">
-      <h2 class="result__address__title">Вы так же можете поситить наш шоурум по адресу <br> <a href="#" class="text-accent">Бульвар Вацлава Гавела 16</a></h2>
+      <h2 class="result__address__title">Вы так же можете поситить наш шоурум по адресу <br> <a href="#" class="text-accent">Киев, Бульвар Вацлава Гавела 16, строение 11, офис 304</a></h2>
       <div class="result__address__map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.158742345904!2d30.406733615730946!3d50.4381437794736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cc0d1e0af145%3A0x87631d635d9897b8!2z0LHRg9C70YzQstCw0YAg0JLQsNGG0LvQsNCy0LAg0JPQsNCy0LXQu9CwLCAxNiwg0JrQuNC10LIsIDAyMDAw!5e0!3m2!1sru!2sua!4v1568299117901!5m2!1sru!2sua"
