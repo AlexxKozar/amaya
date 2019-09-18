@@ -62,12 +62,14 @@ export class ResultComponent implements OnInit {
 
   onFormSubmit() {
     if (this.resultForm.valid) {
-      this.httpService.sendResultData({
-        calculationData: this.calculationData,
-        formsData: this.formsData,
-        contactData: this.resultForm.value
-      });
-      this.router.navigate(['/thanks']);
+      this.httpService.sendResultData({}).subscribe(resp => {
+          console.log('resp', resp);
+        },
+        error => {
+        console.log(error);
+          // error - объект ошибки
+        });
+      // this.router.navigate(['/thanks']);
     } else {
       this.validationService.setFormValidationStatus(this.resultForm, this.validationStatus);
      }
