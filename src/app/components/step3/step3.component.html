@@ -1,4 +1,4 @@
-<form (ngSubmit)="onFormSubmit()" class="step3">
+<form [formGroup]="sizeForm" (ngSubmit)="onFormSubmit()" class="step3">
 
   <h2 class="step3__title title-default">3. Укажите размеры</h2>
   <p class="second-title-default">Осталось ответить на 2 вопроса, чтобы получить гарантированный бонус</p>
@@ -7,9 +7,15 @@
 
     <div class="row step3__row1">
       <div class="col-12">
-        <div *ngIf="inputsDisplay.top" class="step3__size step3__size-top">
+        <div *ngIf="inputsDisplayConfig.top" class="step3__size step3__size-top">
           <p class="step3__size__text">Длинна верхней части: </p>
-          <input required [(ngModel)]="sizeModel.l1" class="step3__size__input" name="size1" id="size-top" type="number">
+          <input
+            formControlName="top"
+            [ngClass]="{'input-invalid': !validationStatus.top}"
+            class="step3__size__input"
+            id="size-top"
+            type="text"
+            placeholder="0">
           <label class="step3__size__label" for="size-top">мм</label>
         </div>
       </div>
@@ -17,9 +23,15 @@
 
     <div class="row step3__row2">
       <div class="col-12 col-md-4 col-lg-3 step3__size-left-col">
-        <div *ngIf="inputsDisplay.left" class="step3__size step3__size-left">
+        <div *ngIf="inputsDisplayConfig.left" class="step3__size step3__size-left">
           <p class="step3__size__text">Длинна левой части: </p>
-          <input required [(ngModel)]="sizeModel.l2" class="step3__size__input" name="size2" id="size-left" type="number">
+          <input
+            formControlName="left"
+            class="step3__size__input"
+            [ngClass]="{'input-invalid': !validationStatus.left}"
+            id="size-left"
+            type="text"
+            placeholder="0">
           <label class="step3__size__label" for="size-left">мм</label>
         </div>
       </div>
@@ -29,17 +41,27 @@
       </div>
 
       <div class="col-12 col-md-4 col-lg-3 step3__size-right-col">
-        <div *ngIf="inputsDisplay.right" class="step3__size step3__size-right">
+        <div *ngIf="inputsDisplayConfig.right" class="step3__size step3__size-right">
           <p class="step3__size__text">Длинна правой части: </p>
-          <input required [(ngModel)]="sizeModel.l3" class="step3__size__input" id="size-right" name="size3" type="number">
+          <input
+            formControlName="right"
+            [ngClass]="{'input-invalid': !validationStatus.right}"
+            class="step3__size__input"
+            id="size-right"
+            type="text"
+            placeholder="0">
           <label class="step3__size__label" for="size-right">мм</label>
         </div>
       </div>
     </div>
   </div>
+
   <div class="step3__button-container">
     <button type="submit" class="step3__button action-button">Далее</button>
   </div>
+
+  <p class="validation-error" *ngIf="!validationStatus.form">Введите корректные данные!</p>
+
   <div class="step__prev-container">
     <a href="#" routerLink="/step2" class="step__prev-button">Назад</a>
   </div>

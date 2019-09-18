@@ -16,11 +16,28 @@
       font-family: $regular;
       color: $text-main;
     }
+    &__input {
+      margin: 5px 5px 0 0;
+      font-family: $regular;
+      font-size: 18px;
+      color: $text-main;
+      width: 120px;
+      padding: 0 5px;
+    }
     &__description {
       margin: 0;
       font-size: 16px;
       font-family: $regular;
       color: $text-main;
+    }
+    &__description-hidden {
+      margin: 10px 0 0 0;
+      font-size: 16px;
+      font-family: $italic;
+      color: $text-main;
+    }
+    &__step4__question__label-hidden {
+      margin-left: 5px;
     }
     @media screen and (max-width: 600px) {
       margin-top: 25px;

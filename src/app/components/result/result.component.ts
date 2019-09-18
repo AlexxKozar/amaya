@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { CalculationService } from '@services/calculation.service';
 import { CalculationDataInterface } from '@interfaces/calculation-data.interface';
 import { STYLE_IMAGE_FILENAMES } from '@constants/image-filenames.constant'
+import { ValueFormattersHelpers } from '@helpers/value-formatters.helpers';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ValidationService} from '@services/validation.service';
 
 @Component({
   selector: 'app-result',
@@ -11,13 +14,19 @@ import { STYLE_IMAGE_FILENAMES } from '@constants/image-filenames.constant'
 })
 export class ResultComponent implements OnInit {
 
-  public contactsModel = {
-    name: '',
-    phone: ''
-  };
+  public resultForm = new FormGroup({
+    name: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(3)
+      ]),
+    phone: new FormControl(null, [
+        Validators.required,
+      ]),
+  });
 
   public calculationData = {
     totalPrice: 0,
+    configurationPrice: 0,
     kitchenPrice: 0,
     downPrice: 0,
     mezzaninePrice: 0,
@@ -29,26 +38,46 @@ export class ResultComponent implements OnInit {
     deliveryPrice: 0
   };
 
+  public validationStatus = {
+    form: true,
+    name: true,
+    phone: true
+  };
+
   public formsData: CalculationDataInterface;
   public kitchenImageFilename: string;
 
   constructor(
     private router: Router,
-    private calculationService: CalculationService
+    private calculationService: CalculationService,
+    private validationService: ValidationService
   ) { }
 
   ngOnInit() {
+    this._formatDataToMoneyFormat(this.calculationData);
     this._setInitialData();
   }
 
   onFormSubmit() {
+    if (this.resultForm.valid) {
+      this.router.navigate(['/thanks']);
+    } else {
+      this.validationService.setFormValidationStatus(this.resultForm, this.validationStatus);
+     }
   }
 
   private _setInitialData() {
     this.calculationData = this.calculationService.calculateKitchenPrice();
+    this._formatDataToMoneyFormat(this.calculationData);
     this.formsData = this.calculationService.getFormsData();
     this.kitchenImageFilename = STYLE_IMAGE_FILENAMES[this.formsData.style];
     console.log(this.calculationData);
+  }
+
+  private _formatDataToMoneyFormat(data) {
+    for (const key in data) {
+      data[key] = ValueFormattersHelpers.toMoneyFormat(data[key]) + ' грн';
+    }
   }
 
 }

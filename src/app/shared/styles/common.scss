@@ -1,6 +1,8 @@
 @import "fonts";
 @import "variables";
 
+// BUTTONS
+
 .action-button {
   display: block;
   padding: 18px 24px;
@@ -15,39 +17,8 @@
   &:hover {
     color: #fff;
     text-decoration: none;
-    background: #3F9BB0;;
+    background: $blue-accent;;
   }
-}
-
-.second-title-default {
-  width: 90%;
-  max-width: 800px;
-  margin: 5px auto 0 auto;
-  font-family: $regular;
-  font-size: 18px;
-  color: $text-main;
-  text-align: center;
-  opacity: .9;
-  @media screen and (max-width: 480px) {
-    font-size: 16px;
-  }
-}
-
-.title-default {
-  font-family: $regular;
-  font-size: 36px;
-  color: $text-main;
-  text-align: center;
-  @media screen and (max-width: 600px) {
-    font-size: 30px;
-  }
-  @media screen and (max-width: 480px) {
-    font-size: 26px;
-  }
-}
-
-.text-accent {
-  color: $blue-main
 }
 
 .step__prev-button {
@@ -77,11 +48,66 @@
   }
 }
 
-.step__prev-container {
-  width: 100%;
+
+// TITLES
+
+.title-default {
+  font-family: $regular;
+  font-size: 36px;
+  color: $text-main;
   text-align: center;
+  @media screen and (max-width: 600px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 26px;
+  }
 }
+
+.second-title-default {
+  width: 90%;
+  max-width: 800px;
+  margin: 5px auto 0 auto;
+  font-family: $regular;
+  font-size: 18px;
+  color: $text-main;
+  text-align: center;
+  opacity: .9;
+  @media screen and (max-width: 480px) {
+    font-size: 16px;
+  }
+}
+
+
+// TEXT
 
 .bold {
   font-family: $bold;
+}
+
+.text-accent {
+  color: $blue-main
+}
+
+
+// FORMS
+
+.input-invalid {
+  border: 2px solid red!important;
+}
+
+.validation-error {
+  text-align: center;
+  margin: 0 auto 10px auto;
+  font-family: $regular;
+  font-size: 14px;
+  color: red;
+}
+
+
+// OTHER ELEMENTS
+
+.step__prev-container {
+  width: 100%;
+  text-align: center;
 }

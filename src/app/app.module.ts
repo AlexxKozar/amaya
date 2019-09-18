@@ -12,6 +12,7 @@ import { Step3Component } from '@components/step3/step3.component';
 import { Step4Component } from '@components/step4/step4.component';
 import { ResultComponent } from '@components/result/result.component';
 import { ModalComponent } from '@components/modal/modal.component';
+import { ThanksComponent } from './components/thanks/thanks.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ModalComponent } from '@components/modal/modal.component';
     Step4Component,
     ResultComponent,
     ModalComponent,
+    ThanksComponent,
   ],
   imports: [
     BrowserModule,

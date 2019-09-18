@@ -12,15 +12,13 @@ export class CalculationService {
     style: 'urban',
     sizes: [0, 0, 0],
     configuration: {
-      down: {selected: false},
-      freezer: {selected: false},
-      oven: {selected: false},
-      mezzanine: {selected: false},
-      shelves: {selected: false},
-      island: {
-        selected: false,
-        size: 0
-      },
+      downSelection: false,
+      freezerSelection: false,
+      ovenSelection: false,
+      mezzanineSelection: false,
+      shelvesSelection: false,
+      islandSelection: false,
+      islandSize: 0
     },
     schema: 1
   };
@@ -31,30 +29,33 @@ export class CalculationService {
     const { style, sizes, configuration } = data;
     const kitchenPrices = this.prices[style];
     const totalSize = this.calculateTotalSize(sizes);
-    const kitchenPrice = Math.round(kitchenPrices.kitchen * totalSize);
-    const downPrice = Math.round(+configuration.down.selected * kitchenPrices.down * totalSize);
-    const mezzaninePrice = Math.round(+configuration.mezzanine.selected * kitchenPrices.mezzanine * totalSize);
-    const islandPrice = Math.round(+configuration.island.selected * kitchenPrices.island * configuration.island.size);
-    const freezerPrice = +configuration.freezer.selected * kitchenPrices.freezer;
-    const ovenPrice = +configuration.oven.selected * kitchenPrices.oven;
-    const shelvesPrice = +configuration.shelves.selected * kitchenPrices.shelves;
-    const mountingPrice = Math.round(kitchenPrices.mounting * totalSize);
+    const kitchenPrice = kitchenPrices.kitchen * totalSize;
+    const downPrice = +configuration.downSelection * kitchenPrices.down * totalSize;
+    const mezzaninePrice = +configuration.mezzanineSelection * kitchenPrices.mezzanine * totalSize;
+    const islandPrice = +configuration.islandSelection * kitchenPrices.island * configuration.islandSize / 1000;
+    const freezerPrice = +configuration.freezerSelection * kitchenPrices.freezer;
+    const ovenPrice = +configuration.ovenSelection * kitchenPrices.oven;
+    const shelvesPrice = +configuration.shelvesSelection * kitchenPrices.shelves;
+    const mountingPrice = kitchenPrices.mounting * totalSize;
     const deliveryPrice = kitchenPrices.delivery;
 
-    const totalPrice = Math.round(
+    const configurationPrice =
       kitchenPrice +
       downPrice +
       mezzaninePrice +
       islandPrice +
       freezerPrice +
       ovenPrice +
-      shelvesPrice +
+      shelvesPrice;
+
+    const totalPrice =
+      configurationPrice +
       mountingPrice +
-      deliveryPrice
-    );
+      deliveryPrice;
 
     return {
       totalPrice,
+      configurationPrice,
       kitchenPrice,
       downPrice,
       mezzaninePrice,
