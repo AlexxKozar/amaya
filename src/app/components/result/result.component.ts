@@ -4,8 +4,9 @@ import { CalculationService } from '@services/calculation.service';
 import { CalculationDataInterface } from '@interfaces/calculation-data.interface';
 import { STYLE_IMAGE_FILENAMES } from '@constants/image-filenames.constant'
 import { ValueFormattersHelpers } from '@helpers/value-formatters.helpers';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ValidationService} from '@services/validation.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidationService } from '@services/validation.service';
+import { HttpService } from '@services/http.service';
 
 @Component({
   selector: 'app-result',
@@ -50,7 +51,8 @@ export class ResultComponent implements OnInit {
   constructor(
     private router: Router,
     private calculationService: CalculationService,
-    private validationService: ValidationService
+    private validationService: ValidationService,
+    private httpService: HttpService
   ) { }
 
   ngOnInit() {
@@ -60,6 +62,11 @@ export class ResultComponent implements OnInit {
 
   onFormSubmit() {
     if (this.resultForm.valid) {
+      this.httpService.sendResultData({
+        calculationData: this.calculationData,
+        formsData: this.formsData,
+        contactData: this.resultForm.value
+      });
       this.router.navigate(['/thanks']);
     } else {
       this.validationService.setFormValidationStatus(this.resultForm, this.validationStatus);
