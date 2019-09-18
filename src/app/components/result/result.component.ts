@@ -44,7 +44,7 @@ export class ResultComponent implements OnInit {
     name: true,
     phone: true
   };
-
+  HttpService
   public formsData: CalculationDataInterface;
   public kitchenImageFilename: string;
 

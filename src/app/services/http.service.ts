@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-const apiUrl = 'http://localhost:8080/';
+const apiUrl = '/api';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,11 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   public sendResultData(result) {
-    return this.http.post<any>(`${apiUrl}/api/email/result`, result);
+    return this.http.post<any>(`${apiUrl}/email/result`, result);
   }
 
   public sendContactData(result) {
-    return this.http.post<any>(`${apiUrl}/api/email/contacts`, result);
+    return this.http.post<any>(`${apiUrl}/email/contacts`, result);
   }
 
 }
