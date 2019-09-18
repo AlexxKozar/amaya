@@ -24,7 +24,7 @@ function sendMail($to, $subject, $template) {
 $app = AppFactory::create();
 
 $app->get('/', function (Request $request, Response $response, $args) {
-    $root_file = '/dist/amaya/index.html';
+    $root_file = './dist/amaya/index.html';
 
     if (file_exists($root_file)) {
         $response
