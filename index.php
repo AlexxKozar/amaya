@@ -2,6 +2,7 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
+use Slim\Exception\HttpNotFoundException;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -22,6 +23,23 @@ function sendMail($to, $subject, $template) {
 
 
 $app = AppFactory::create();
+
+/**
+ * Middleware for handling erros
+ * Needs to setup php.ini to not display errors
+ */
+$app->addErrorMiddleware(true, false, false);
+
+$app->add(function($request, $handler) {
+    $response = $handler->handle($request);
+    $response = $response
+        ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+        ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    
+    return $response;
+});
+
+$app->addRoutingMiddleware();
 
 $app->get('/', function (Request $request, Response $response, $args) {
     $root_file = './dist/amaya/index.html';
@@ -76,10 +94,9 @@ $app->group('/api/email', function ($group) {
     });
 });
 
-/**
- * Middleware for handling erros
- * Needs to setup php.ini to not display errors
- */
-$app->addErrorMiddleware(true, false, false);
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {
+    throw new HttpNotFoundException($request);
+});
+
 
 $app->run();
