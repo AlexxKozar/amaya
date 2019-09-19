@@ -2,7 +2,6 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
-use Slim\Exception\HttpNotFoundException;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -30,7 +29,7 @@ $app = AppFactory::create();
  */
 $app->addErrorMiddleware(true, false, false);
 
-$app->add(function($request, $handler) {
+$app->add(function(Request $request, $handler) {
     $response = $handler->handle($request);
     $response = $response
         ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
@@ -38,8 +37,6 @@ $app->add(function($request, $handler) {
     
     return $response;
 });
-
-$app->addRoutingMiddleware();
 
 $app->get('/', function (Request $request, Response $response, $args) {
     $root_file = './dist/amaya/index.html';
@@ -71,7 +68,9 @@ $app->group('/api/email', function ($group) {
                     ->withHeader('Content-Type', 'application/json')
                     ->withStatus(200);
         } else {
-            throw new \Slim\Exception\NotFoundException($request, $response);
+            return $response
+                    ->withHeader('Content-Type', 'application/json')
+                    ->withStatus(404);
         }
     });
 
@@ -89,13 +88,15 @@ $app->group('/api/email', function ($group) {
                     ->withHeader('Content-Type', 'application/json')
                     ->withStatus(200);
         } else {
-            throw new \Slim\Exception\NotFoundException($request, $response);
+            return $response
+                ->withHeader('Content-Type', 'application/json')
+                ->withStatus(404);
         }
     });
 });
 
 $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {
-    throw new HttpNotFoundException($request);
+    throw new \Slim\Exception\NotFoundException($request);
 });
 
 
