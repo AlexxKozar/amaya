@@ -55,10 +55,16 @@
 
   @media screen and (max-width: 768px){
     &__size-left-col {
-      order: 2;
+      order: 0;
     }
     &__size-right-col {
-      order: 3;
+      order: 1;
+    }
+    &__size-image-col {
+      order: 2;
+    }
+    &__row2 {
+      margin-top: 0;
     }
   }
 }
