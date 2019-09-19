@@ -23,11 +23,15 @@ function sendMail($to, $subject, $template) {
 
 $app = AppFactory::create();
 
-/**
- * Middleware for handling erros
- * Needs to setup php.ini to not display errors
- */
-$app->addErrorMiddleware(true, false, false);
+
+$app->redirect('./', '/', 301);
+
+$app->addRoutingMiddleware();
+
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+
+
+
 
 $app->add(function(Request $request, $handler) {
     $response = $handler->handle($request);
@@ -39,7 +43,7 @@ $app->add(function(Request $request, $handler) {
 });
 
 $app->get('/', function (Request $request, Response $response, $args) {
-    $root_file = './dist/amaya/index.html';
+    $root_file = './index.html';
 
     if (file_exists($root_file)) {
         $response

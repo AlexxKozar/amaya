@@ -93,10 +93,14 @@
     text-decoration: none;
   }
 
+  &__phone {
+    margin-bottom: 5px;
+  }
+
   &__icon {
     width: 19px;
     height: 19px;
-    margin-right: 5px;
+    margin-right: 6px;
     opacity: .9;
   }
 
