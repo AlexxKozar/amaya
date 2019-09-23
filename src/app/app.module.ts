@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,8 +13,7 @@ import { Step2Component } from '@components/step2/step2.component';
 import { Step3Component } from '@components/step3/step3.component';
 import { Step4Component } from '@components/step4/step4.component';
 import { ResultComponent } from '@components/result/result.component';
-import { ModalComponent } from '@components/modal/modal.component';
-import { ThanksComponent } from './components/thanks/thanks.component';
+import { ThanksComponent } from '@components/thanks/thanks.component';
 import { HttpService } from '@services/http.service';
 
 @NgModule({
@@ -25,7 +25,6 @@ import { HttpService } from '@services/http.service';
     Step3Component,
     Step4Component,
     ResultComponent,
-    ModalComponent,
     ThanksComponent,
   ],
   imports: [
@@ -34,8 +33,12 @@ import { HttpService } from '@services/http.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule.forRoot(),
   ],
-  providers: [HttpService],
+  providers: [
+    {provide: 'googleTagManagerId',  useValue: 'GTM-MF2GCK2'},
+    HttpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

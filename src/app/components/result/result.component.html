@@ -1,5 +1,8 @@
 <div class="result">
   <h2 class="result__title title-default">Результаты расчета</h2>
+  <div class="step__prev-container">
+    <a href="#" routerLink="/step4" class="step__prev-button">Назад</a>
+  </div>
   <div class="row">
     <div class="col-sm-12 col-md-4 result__price-col">
       <div class="result__price">
@@ -23,7 +26,7 @@
       <div class="result__configuration">
         <h3 class="result__configuration-title">Конфигурация:</h3>
         <ul class="result__configuration__list">
-          <li><p class="result__configuration-item">Стиль: {{formsData.style}}</p></li>
+          <li><p class="result__configuration-item">Модель: {{formsData.style}}</p></li>
           <li><p class="result__configuration-item">Форма: {{formsData.schema}}</p></li>
           <li><p class="result__configuration-item">Размеры: {{formsData.sizes}} мм</p></li>
           <li *ngIf="formsData.configuration.downSelection"><p class="result__configuration-item">+ Только низ</p></li>

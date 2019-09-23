@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-const apiUrl = '/api';
+import { DOMAIN_NAME } from '@constants/domain-name.constant';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -10,20 +9,21 @@ const httpOptions = {
   })
 };
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
+  apiUrl = DOMAIN_NAME + '/api';
+
   constructor(private http: HttpClient) { }
 
-  public sendResultData(result: any): Observable<any> {
-    return this.http.post<any>(`${apiUrl}/email/result`, result, httpOptions);
+  public sendResultData(body: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/email/result`, body, httpOptions);
   }
 
-  public sendContactData(result) {
-    return this.http.post<any>(`${apiUrl}/email/contacts`, result);
+  public sendContactData(body) {
+    return this.http.post<any>(`${this.apiUrl}/email/contacts`, body);
   }
 
 }

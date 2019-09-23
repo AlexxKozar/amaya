@@ -1,9 +1,6 @@
 @import "variables";
 
 .result {
-  &__title {
-    margin-bottom: 40px;
-  }
   &__image {
     width: 100%;
   }
@@ -17,9 +14,6 @@
   }
 
   @media screen and (max-width: 768px) {
-    &__title {
-      margin-bottom: 20px;
-    }
     &__image-col {
       order: 1;
     }
@@ -197,4 +191,10 @@
   height: 1px;
   background: $text-main;
   opacity: .6;
+}
+.step__prev-container{
+  margin: 15px 0 35px 0;
+  @media screen and (max-width: 768px) {
+    margin: 10px 0 20px 0;
+  }
 }

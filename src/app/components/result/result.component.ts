@@ -44,7 +44,6 @@ export class ResultComponent implements OnInit {
     name: true,
     phone: true
   };
-  HttpService
   public formsData: CalculationDataInterface;
   public kitchenImageFilename: string;
 
@@ -61,15 +60,23 @@ export class ResultComponent implements OnInit {
   }
 
   onFormSubmit() {
+    const body = {
+      calculationData: this.calculationData,
+      formsData: this.formsData,
+      contactData: this.resultForm.value
+    };
+
     if (this.resultForm.valid) {
-      this.httpService.sendResultData({}).subscribe(resp => {
+      this.httpService.sendResultData(body).subscribe((resp: {status: string}) => {
           console.log('resp', resp);
+          if (resp.status === 'ok') {
+            this.router.navigate(['/thanks']);
+          }
         },
         error => {
-        console.log(error);
-          // error - объект ошибки
+          // TODO handle exception
+          console.log(error);
         });
-      // this.router.navigate(['/thanks']);
     } else {
       this.validationService.setFormValidationStatus(this.resultForm, this.validationStatus);
      }
