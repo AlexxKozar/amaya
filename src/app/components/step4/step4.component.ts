@@ -11,18 +11,6 @@ import {ValidationService} from '@services/validation.service';
 })
 export class Step4Component implements OnInit {
 
-  // public configurationModel: CalculationDataInterface['configuration'] = {
-  //   down: {selected: false},
-  //   freezer: {selected: false},
-  //   oven: {selected: false},
-  //   mezzanine: {selected: false},
-  //   shelves: {selected: false},
-  //   island: {
-  //     selected: false,
-  //     size: 0
-  //   },
-  // };
-
   public inputsDisplayConfig = {
     islandSize: false
   };
@@ -55,9 +43,8 @@ export class Step4Component implements OnInit {
 
   public onFormSubmit() {
     if (this.configurationForm.valid) {
-      // this._setConfigurationModelByFormValue(this.configurationModel, this.configurationForm);
       this.calculationService.setConfiguration(this.configurationForm.value);
-      this.router.navigate(['/result']);
+      this.router.navigate(['/contact-form']);
     } else {
       this.validationService.setFormValidationStatus(this.configurationForm, this.validationStatus);
     }
@@ -72,15 +59,4 @@ export class Step4Component implements OnInit {
       }
     });
   }
-
-  // private _setConfigurationModelByFormValue(configuration: CalculationDataInterface['configuration'], form: FormGroup) {
-  //   const formValue = form.value;
-  //   configuration.down.selected = formValue.downSelection;
-  //   configuration.freezer.selected = formValue.freezerSelection;
-  //   configuration.mezzanine.selected = formValue.mezzanineSelection;
-  //   configuration.shelves.selected = formValue.shelvesSelection;
-  //   configuration.island.selected = formValue.islandSelection;
-  //   configuration.island.size = formValue.islandSize;
-  // }
-
 }

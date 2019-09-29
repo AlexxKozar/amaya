@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ValueFormattersHelpers} from '@helpers/value-formatters.helpers';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,12 @@ export class ValidationService {
 
   public isControlValid(control: AbstractControl): boolean {
     return control.status === 'VALID';
+  }
+
+  public formatDataToMoneyFormat(data) {
+    for (const key in data) {
+      data[key] = ValueFormattersHelpers.toMoneyFormat(data[key]) + ' грн';
+    }
   }
 
 }

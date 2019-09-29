@@ -1,0 +1,37 @@
+@import "variables";
+
+.contact-form {
+  max-width: 650px;
+  margin: 0 auto;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+    margin: 30px auto;
+    &__input {
+      width: 100%;
+      padding: 12px 20px;
+      margin-bottom: 10px;
+      font-family: $regular;
+      font-size: 16px;
+      color: $text-main;
+      border: 1px solid $text-main;
+      border-radius: 4px;
+    }
+    &__button-container {
+      display: flex;
+    }
+    &__button {
+      width: 100%;
+      text-align: center;
+      border-radius: 4px;
+    }
+    @media screen and (max-width: 768px) {
+      margin-top: 20px;
+      &-col {
+        order: 2;
+      }
+    }
+  }
+}

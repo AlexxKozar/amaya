@@ -24,15 +24,17 @@ export class AppComponent {
       filter(e => e instanceof NavigationEnd)
     );
     navEndEvent$.subscribe((e: NavigationEnd) => {
+      const url = e.urlAfterRedirects;
+
       gtag('config', 'GTM-MF2GCK2', {
-        page_path: this.domainName + e.urlAfterRedirects
+        page_path: this.domainName + url
       });
 
       fbq('track', 'PageView', {
-        url: this.domainName + e.urlAfterRedirects
+        url: this.domainName + url
       });
 
-      if (e.urlAfterRedirects === '/thanks') {
+      if (url === '/thanks' || url === '/result') {
         fbq('track', 'Lead');
       }
     });

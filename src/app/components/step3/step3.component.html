@@ -9,6 +9,8 @@
       <div class="col-12">
         <div *ngIf="inputsDisplayConfig.top" class="step3__size step3__size-top">
           <p class="step3__size__text">Длина верхней части: </p>
+          <p class="step3__size__text2">Укажите длину в миллиметрах!</p>
+
           <input
             formControlName="top"
             [ngClass]="{'input-invalid': !validationStatus.top}"
@@ -25,6 +27,7 @@
       <div class="col-12 col-md-4 col-lg-3 step3__size-left-col">
         <div *ngIf="inputsDisplayConfig.left" class="step3__size step3__size-left">
           <p class="step3__size__text">Длина левой части: </p>
+          <p class="step3__size__text2">Укажите длину в миллиметрах!</p>
           <input
             formControlName="left"
             class="step3__size__input"
@@ -43,6 +46,7 @@
       <div class="col-12 col-md-4 col-lg-3 step3__size-right-col">
         <div *ngIf="inputsDisplayConfig.right" class="step3__size step3__size-right">
           <p class="step3__size__text">Длина правой части: </p>
+          <p class="step3__size__text2">Укажите длину в миллиметрах!</p>
           <input
             formControlName="right"
             [ngClass]="{'input-invalid': !validationStatus.right}"

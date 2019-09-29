@@ -59,6 +59,7 @@ $app->group('/api/email', function ($group) {
     $group->post('/result', function (Request $request, Response $response, $args) {
 
         $to = 'info@amaya.com.ua';
+//         $to = 'alexkozar1306@gmail.com';
         $subject = 'Калькулятор. Расчет стоимости.';
 
         $body = $request->getBody();
@@ -124,6 +125,7 @@ $app->group('/api/email', function ($group) {
 
     $group->post('/contacts', function ($request, $response, $args) {
         $to = 'info@amaya.com.ua';
+//         $to = 'alexkozar1306@gmail.com';
         $subject = 'Калькулятор. Консультация.';
 
         $body = $request->getBody();

@@ -23,7 +23,14 @@
        font-family: $regular;
        font-size: 18px;
        color: $text-main;
+       margin: 0;
      }
+    &__text2 {
+      font-family: $italic;
+      font-size: 16px;
+      color: $text-main;
+      margin-top: 0;
+    }
     &__input {
       font-family: $regular;
       font-size: 18px;

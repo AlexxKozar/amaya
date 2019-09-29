@@ -1,0 +1,28 @@
+<div class="contact-form">
+  <h2 class="result__title title-default">Последний шаг</h2>
+  <p class="second-title-default">Чтобы узнать стоимость Вашей кухни прямо сейчас, заполните форму ниже и перейдите на страницу результата</p>
+  <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit()" class="contact-form__form">
+    <input
+      formControlName="name"
+      [ngClass]="{'input-invalid': !validationStatus.name}"
+      class="contact-form__form__input"
+      type="text"
+      placeholder="Имя">
+    <input
+      formControlName="phone"
+      [ngClass]="{'input-invalid': !validationStatus.phone}"
+      class="contact-form__form__input"
+      type="text"
+      placeholder="Телефон">
+    <div class="contact-form__form__button-container">
+      <button type="submit" class="contact-form__form__button action-button">Перейти к результатам</button>
+    </div>
+    <p class="validation-error" *ngIf="!validationStatus.form">Введите корректные данные!</p>
+  </form>
+
+  <div class="step__prev-container">
+    <a href="#" routerLink="/step4" class="step__prev-button">Назад</a>
+  </div>
+
+</div>
+

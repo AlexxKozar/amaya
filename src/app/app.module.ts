@@ -15,6 +15,7 @@ import { Step4Component } from '@components/step4/step4.component';
 import { ResultComponent } from '@components/result/result.component';
 import { ThanksComponent } from '@components/thanks/thanks.component';
 import { HttpService } from '@services/http.service';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HttpService } from '@services/http.service';
     Step4Component,
     ResultComponent,
     ThanksComponent,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,
