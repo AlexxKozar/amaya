@@ -30,7 +30,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
     ContactFormComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,

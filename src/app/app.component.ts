@@ -16,7 +16,7 @@ export class AppComponent {
   domainName = DOMAIN_NAME;
 
   constructor(private router: Router) {
-    this._initRouterTracking();
+    // this._initRouterTracking();
   }
 
   private _initRouterTracking() {
