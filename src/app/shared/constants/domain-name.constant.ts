@@ -1,1 +1,1 @@
-export const DOMAIN_NAME = 'https://calculator-amaya.store';
+export const DOMAIN_NAME = 'http://calculator.m-a.com.ua';
