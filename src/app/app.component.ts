@@ -26,17 +26,17 @@ export class AppComponent {
     navEndEvent$.subscribe((e: NavigationEnd) => {
       const url = e.urlAfterRedirects;
 
-      gtag('config', 'GTM-MF2GCK2', {
-        page_path: this.domainName + url
-      });
+      // gtag('config', 'GTM-WM384TS', {
+      //   page_path: this.domainName + url
+      // });
 
-      fbq('track', 'PageView', {
-        url: this.domainName + url
-      });
+      // fbq('track', 'PageView', {
+      //   url: this.domainName + url
+      // });
 
-      if (url === '/thanks' || url === '/result') {
-        fbq('track', 'Lead');
-      }
+      // if (url === '/thanks' || url === '/result') {
+      //   fbq('track', 'Lead');
+      // }
     });
   }
 }
