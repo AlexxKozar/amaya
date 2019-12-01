@@ -17,6 +17,8 @@ import { ThanksComponent } from '@components/thanks/thanks.component';
 import { HttpService } from '@services/http.service';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
+import { CoreModule } from './core/core.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
+    CoreModule
   ],
   providers: [
     {provide: 'googleTagManagerId',  useValue: 'GTM-MF2GCK2'},

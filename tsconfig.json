@@ -23,7 +23,8 @@
       "@services/*": ["src/app/services/*"],
       "@constants/*": ["src/app/shared/constants/*"],
       "@interfaces/*": ["src/app/shared/interfaces/*"],
-      "@helpers/*": ["src/app/shared/helpers/*"]
+      "@helpers/*": ["src/app/shared/helpers/*"],
+      "@core/*": ["src/app/core/*"]
 
     }
   }
